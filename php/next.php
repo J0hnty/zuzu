@@ -35,7 +35,8 @@ session_start();
                             <div class="card-title"><?= $sushi['price']?></div>
                             <div class="card-title"><?= $sushi['amount']?></div>
                             <form method="post">
-                                <button name="add<?=$i++?>" value="<?= $sushi['name']?>" type="submit">add</button>
+                                <input class="invis" name="id" type="text" value="<?=$sushi['id']?>">
+                                <button name="add" value="<?= $sushi['name']?>" type="submit">add</button>
                             </form>
                         </div>
                     </div>
@@ -45,11 +46,11 @@ session_start();
                 <button type="button"><a href="overview.php">overview</a></button>
                 <?php
                 $amount = 0; 
-                if (isset($_POST['add1']) || isset($_POST['add2'])) {
+                if (isset($_POST['add'])) {
                     $amount++;
                     updateStock($amount, $_POST['add']);
-                    $_SESSION['items'][$amount] = array('product' => $_POST['add']);
-                    var_dump($_SESSION['items']);
+                    // $_SESSION['items'][$amount] = array('product' => $_POST['add']);
+                    var_dump($_POST['id']);
                 }
                 ?>
             </div>
